@@ -1,0 +1,76 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "My Favorite Song";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+<style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212;
+    color: #ffffff;
+    text-align: center;
+    padding: 20px;
+}
+
+Aniheader {
+    font-size: 3em;
+    margin-bottom: 30px;
+    padding: 20px;
+    color: #ff4081;
+    animation: glow 1s ease-in-out infinite alternate;
+}
+
+.video-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@@keyframes glow {
+    from {
+        text-shadow: 0 0 10px #ff4081, 0 0 20px #ff4081, 0 0 30px #ff4081;
+    }
+    to {
+        text-shadow: 0 0 20px #ff79a1, 0 0 30px #ff79a1, 0 0 40px #ff79a1;
+    }
+}
+
+</style>
+
+</head>
+<body>
+    <Aniheader id="animated-header">My Favorite Song 🎵</Aniheader>
+
+    <main>
+        <div class="video-container">
+            <!-- Replace with your favorite YouTube video -->
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/kXYiU_JCYtU"
+                    title="YouTube video player" frameborder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+            </iframe>
+        </div>
+    </main>
+
+    <script>
+        // Looping color animation for header
+        document.addEventListener("DOMContentLoaded", function () {
+            const header = document.getElementById("animated-header");
+            const colors = ["#ff4081", "#7C4DFF", "#00E676", "#FF9100"];
+            let colorIndex = 0;
+
+            setInterval(() => {
+                header.style.color = colors[colorIndex];
+                colorIndex = (colorIndex + 1) % colors.length;
+            }, 1000); // Change color every second
+        });
+
+    </script>
+</body>
+</html>
